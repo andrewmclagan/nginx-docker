@@ -1,0 +1,35 @@
+kind: pipeline
+name: default
+steps:
+  - name: node-web
+    image: plugins/docker
+    settings:
+      repo: beamaustralia/nginx
+      dockerfile: Dockerfile.node-web
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      tags: [ '1.15-node-web' ]
+
+  - name: php-api
+    image: plugins/docker
+    settings:
+      repo: beamaustralia/nginx
+      dockerfile: Dockerfile.php-api
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      tags: [ '1.15-php-api' ]      
+
+  - name: php-web
+    image: plugins/docker
+    settings:
+      repo: beamaustralia/nginx
+      dockerfile: Dockerfile.php-web
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      tags: [ '1.15-php-web' ]        

@@ -1,0 +1,11 @@
+FROM nginx:1.15-alpine
+
+MAINTAINER "Andrew McLagan " <andrew@beamaustralia.com.au>
+
+ENV TZ='Australia/Melbourne'
+
+ADD ./configs/cors.conf /etc/nginx/cors.conf
+
+ADD ./configs/php-api.conf /etc/nginx/nginx.conf
+
+EXPOSE 80 443
